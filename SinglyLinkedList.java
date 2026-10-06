@@ -1,85 +1,82 @@
 /**
  * SinglyLinkedList
  */
-public class SinglyLinkedList implements LinkedList{
+public class SinglyLinkedList implements LinkedList {
 
-    public Node head,tail;
-    private int size=0;
+    public Node head, tail;
+    private int size = 0;
 
-    public SinglyLinkedList(){
-        head=tail=null;
+    public SinglyLinkedList() {
+        head = tail = null;
     }
-    public boolean isEmpty(){
-        return(size==0);
+
+    public boolean isEmpty() {
+        return (size == 0);
     }
-    public int size(){
+
+    public int size() {
         return size;
     }
-    public void addFirst(Object inputData){
+
+    public void addFirst(Object inputData) {
         Node baru = new Node(inputData);
-        if (isEmpty()){
+        if (isEmpty()) {
             head = baru;
             tail = baru;
             size++;
-        }
-        else {
+        } else {
             baru.pointer = head;
             head = baru;
             size++;
         }
     }
 
-    public void addLast(Object inputData){
+    public void addLast(Object inputData) {
         Node baru = new Node(inputData);
-        if (isEmpty()){
+        if (isEmpty()) {
             head = baru;
             tail = baru;
             size++;
-        }
-        else {
+        } else {
             tail.pointer = baru;
             tail = baru;
             size++;
         }
     }
 
-    public void addAfter(int index,Object inputData){
+    public void addAfter(int index, Object inputData) {
         Node baru = new Node(inputData);
-        Node C=head;
-        for(int i=0;i<index;i++){
+        Node C = head;
+        for (int i = 0; i < index; i++) {
             C = C.pointer;
         }
         baru.pointer = C.pointer;
         C.pointer = baru;
     }
 
-    public void deleteFirst(){
-        if(isEmpty()){
+    public void deleteFirst() {
+        if (isEmpty()) {
             System.err.println("Linked list kosong");
-        }
-        else if(size==1){//else if(head==tail)
+        } else if (size == 1) {// else if(head==tail)
             head = null;
             tail = null;
             size--;
-        }
-        else{
+        } else {
             head = head.pointer;
             size--;
         }
     }
 
-    public void deleteLast(){
-        if(isEmpty()){
+    public void deleteLast() {
+        if (isEmpty()) {
             System.err.println("Linked list kosong");
-        }
-        else if(size==1){//else if(head==tail)
+        } else if (size == 1) {// else if(head==tail)
             head = null;
             tail = null;
             size--;
-        }
-        else{
+        } else {
             Node temp = head;
-            for(int i=1;i<size;i++){
+            for (int i = 1; i < size; i++) {
                 temp = temp.pointer;
             }
             tail = temp;
@@ -88,18 +85,16 @@ public class SinglyLinkedList implements LinkedList{
         }
     }
 
-    public void deleteAfter(int index){
-        if(isEmpty()){
+    public void deleteAfter(int index) {
+        if (isEmpty()) {
             System.err.println("Linked list kosong");
-        }
-        else if(size==1){//else if(head==tail)
+        } else if (size == 1) {// else if(head==tail)
             head = null;
             tail = null;
             size--;
-        }
-        else{
+        } else {
             Node temp = head;
-            for(int i=0;i<index;i++){
+            for (int i = 0; i < index; i++) {
                 temp = temp.pointer;
             }
             temp.pointer = temp.pointer.pointer;
@@ -107,32 +102,33 @@ public class SinglyLinkedList implements LinkedList{
         }
     }
 
-    public void print(){
+    public void print() {
         Node currentNode = head;
-        for(int i =0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             System.out.println(currentNode.data);
             currentNode = currentNode.pointer;
         }
     }
+
     @Override
     public Object get(int index) {
-        if(index < 0 || index >= size){
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(
-                "Index " + index + " berada di luar batas linked list"
-            );
+                    "Index " + index + " berada di luar batas linked list");
         }
         Node current = head;
-        for(int i = 0 ; i<index;i++){
+        for (int i = 0; i < index; i++) {
             current = current.pointer;
         }
         return current.data;
     }
+
     @Override
     public int indexOf(Object targetData) {
         Node current = head;
         int index = 0;
-        while(current != null){
-            if(current.data.equals(targetData)){
+        while (current != null) {
+            if (current.data.equals(targetData)) {
                 return index;
             }
             current = current.pointer;
@@ -141,6 +137,7 @@ public class SinglyLinkedList implements LinkedList{
 
         return -1;
     }
+
     private void printReverseRecursive(Node node) {
         if (node == null) {
             return;
@@ -148,19 +145,54 @@ public class SinglyLinkedList implements LinkedList{
         printReverseRecursive(node.pointer);
         System.out.println(node.data);
     }
+
     @Override
     public void printReverse() {
         printReverseRecursive(head);
 
     }
+
     @Override
     public boolean remove(Object targetData) {
-        // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
+
+        if (isEmpty()) {
+            return false;
+        }
+
+        if (head.data == null ? targetData == null : head.data.equals(targetData)) {
+            deleteFirst();
+            return true;
+        }
+
+        Node current = head;
+
+        while (current.pointer != null) {
+
+            if (current.pointer.data == null
+                    ? targetData == null
+                    : current.pointer.data.equals(targetData)) {
+
+                if (current.pointer == tail) {
+                    tail = current;
+                }
+
+                current.pointer = current.pointer.pointer;
+                size--;
+
+                return true;
+            }
+
+            current = current.pointer;
+        }
+
         return false;
     }
+
     @Override
     public Object[] toArray() {
-        // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
+        // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked
+        // list dalam bentuk array. Data-data pada array disusun secara urut mulai dari
+        // head sampai dengan tail.
         return null;
     }
 }
