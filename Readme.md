@@ -1,4 +1,4 @@
-# 📘 Proyek 1 — Analisis dan Strategi Algoritma (ASD)
+# 📘 Proyek 1 — Algoritma dan Struktur Data (ASD)
 
 <p align="center">
   <strong>Penambahan Fungsionalitas Linked List</strong><br>
