@@ -13,6 +13,15 @@
 
 ---
 
+## 👥 Identitas Kelompok
+
+**Kelas:** TI-D
+
+| No. | Nama | NIM |
+|:---:|---|---|
+| 1 | Rivaldo Rizky Habibie | `255150707111046` |
+| 2 | Raihan Lazuardi Ahmad | `255150700111034` |
+
 ## 📖 Deskripsi Proyek
 
 Proyek ini merupakan tugas **Proyek 1 mata kuliah Analisis dan Strategi Algoritma (ASD)** yang berfokus pada penambahan dan penyempurnaan fungsionalitas struktur data *Linked List* menggunakan bahasa pemrograman Java.
@@ -88,15 +97,6 @@ Aspek yang perlu diperhatikan selama pengujian:
 - **Struktur Data:** Singly Linked List dan Doubly Linked List
 - **Version Control:** Git
 - **Repository Hosting:** GitHub
-
-## 👥 Identitas Kelompok
-
-**Kelas:** TI-D
-
-| No. | Nama | NIM |
-|:---:|---|---|
-| 1 | Rivaldo Rizky Habibie | `255150707111046` |
-| 2 | Raihan Lazuardi Ahmad | `255150700111034` |
 
 ## 📂 Struktur Repository
 
